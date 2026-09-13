@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscrição - Mostra de Tecnologia e Inovação</title>
+    <!-- CSS do Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- CSS Personalizado -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-light">
+
+    <div class="container my-5" style="max-width: 900px;">
+        <div class="card shadow-sm">
+            <div class="card-body p-4 p-md-5">
+                
+                <header class="text-center mb-5">
+                    <h1 class="display-5 text-primary fw-bold">Mostra de Tecnologia e Inovação</h1>
+                    <p class="text-muted">Formulário de Inscrição e Submissão de Projetos</p>
+                </header>
+
+                <!-- 
+                  Adicionada a classe 'needs-validation' e o atributo 'novalidate' 
+                  para desativar os balões em inglês do navegador e usar a validação em Português do Bootstrap 
+                -->
+                <form action="#" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
+                    
+                    <!-- Campo Oculto (Hidden) -->
+                    <input type="hidden" id="form-id" name="form_id" value="mostra_tech_2026">
+
+                    <!-- SEÇÃO 1: Identificação do Participante -->
+                    <fieldset class="border p-3 rounded mb-4">
+                        <legend class="float-none w-auto px-2 fs-5 fw-bold text-primary">1. Identificação do Participante</legend>
+                        
+                        <div class="row g-3">
+                            <div class="col-12 col-md-6">
+                                <label for="nome" class="form-label">Nome Completo:</label>
+                                <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite seu nome" minlength="3" maxlength="100" required>
+                                <div class="invalid-feedback">Por favor, informe seu nome completo (mínimo 3 caracteres).</div>
+                            </div>
+
+                            <div class="col-12 col-md-6">
+                                <label for="senha" class="form-label">Senha de Acesso ao Portal:</label>
+                                <input type="password" class="form-control" id="senha" name="senha" minlength="8" placeholder="Mínimo 8 caracteres" required>
+                                <div class="invalid-feedback">A senha deve ter no mínimo 8 caracteres.</div>
+                                <div class="form-text text-danger fw-bold">⚠️ Atenção: Não utilize uma senha real.</div>
+                            </div>
+
+                            <div class="col-12 col-md-6">
+                                <label for="idade" class="form-label">Idade:</label>
+                                <input type="number" class="form-control" id="idade" name="idade" min="16" max="100" step="1" placeholder="Mín. 16 anos" required>
+                                <div class="invalid-feedback">Informe uma idade válida entre 16 e 100 anos.</div>
+                            </div>
+
+                            <div class="col-12 col-md-6">
+                                <label for="genero" class="form-label">Gênero:</label>
+                                <div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="genero" id="genero-m" value="masculino" required>
+                                        <label class="form-check-label" for="genero-m">Masculino</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="genero" id="genero-f" value="feminino" required>
+                                        <label class="form-check-label" for="genero-f">Feminino</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="genero" id="genero-o" value="outro" required>
+                                        <label class="form-check-label" for="genero-o">Outro</label>
+                                    </div>
+                                    <div class="invalid-feedback">Selecione uma opção de gênero.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <!-- SEÇÃO 2: Dados de Contato -->
+                    <fieldset class="border p-3 rounded mb-4">
+                        <legend class="float-none w-auto px-2 fs-5 fw-bold text-primary">2. Dados de Contato</legend>
+                        
+                        <div class="row g-3">
+                            <div class="col-12 col-md-6">
+                                <label for="email" class="form-label">E-mail Principal:</label>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="seuemail@dominio.com" required>
+                                <div class="invalid-feedback">Por favor, insira um endereço de e-mail válido.</div>
+                            </div>
+
+                            <div class="col-12 col-md-6">
+                                <label for="telefone" class="form-label">Telefone (DDD + Número):</label>
+                                <input type="tel" class="form-control" id="telefone" name="telefone" placeholder="(11) 99999-9999" pattern="^\(\d{2}\)\s\d{4,5}-\d{4}$" required>
+                                <div class="invalid-feedback">Insira o telefone no formato: (11) 99999-9999</div>
+                                <div class="form-text">Exemplo: (11) 99999-9999</div>
+                            </div>
+
+                            <div class="col-12 col-md-6">
+                                <label for="linkedin" class="form-label">Perfil no LinkedIn / Portfólio (URL):</label>
+                                <input type="url" class="form-control" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/seu-perfil">
+                                <div class="invalid-feedback">Insira uma URL válida (começando com http:// ou https://).</div>
+                            </div>
+
+                            <div class="col-12 col-md-6">
+                                <label for="busca-cidade" class="form-label">Cidade de Origem:</label>
+                                <input type="search" class="form-control" id="busca-cidade" name="busca_cidade" list="cidades-list" placeholder="Digite para buscar...">
+                                <datalist id="cidades-list">
+                                    <option value="Itu - SP">
+                                    <option value="Sorocaba - SP">
+                                    <option value="São Paulo - SP">
+                                    <option value="Campinas - SP">
+                                    <option value="Curitiba - PR">
+                                </datalist>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <!-- SEÇÃO 3: Formação e Experiência -->
+                    <fieldset class="border p-3 rounded mb-4">
+                        <legend class="float-none w-auto px-2 fs-5 fw-bold text-primary">3. Formação e Experiência</legend>
+                        
+                        <div class="row g-3">
+                            <div class="col-12 col-md-6">
+                                <label for="escolaridade" class="form-label">Nível de Escolaridade:</label>
+                                <select class="form-select" id="escolaridade" name="escolaridade" required>
+                                    <option value="" selected disabled>Selecione uma opção...</option>
+                                    <option value="medio">Ensino Médio</option>
+                                    <option value="superior_cursando">Ensino Superior (Cursando)</option>
+                                    <option value="superior_completo">Ensino Superior (Completo)</option>
+                                    <option value="pos">Pós-Graduação / Mestrado</option>
+                                </select>
+                                <div class="invalid-feedback">Selecione seu nível de escolaridade.</div>
+                            </div>
+
+                            <div class="col-12 col-md-6">
+                                <label for="curriculo" class="form-label">Anexar Currículo (PDF ou DOCX):</label>
+                                <input type="file" class="form-control" id="curriculo" name="curriculo" accept=".pdf,.docx">
+                            </div>
+
+                            <div class="col-12">
+                                <label class="form-label d-block">Áreas de Interesse (Selecione opções):</label>
+                                <div class="row">
+                                    <div class="col-6 col-md-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="area-frontend" name="areas" value="frontend">
+                                            <label class="form-check-label" for="area-frontend">Front-end</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-md-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="area-backend" name="areas" value="backend">
+                                            <label class="form-check-label" for="area-backend">Back-end</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-md-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="area-ai" name="areas" value="ai">
+                                            <label class="form-check-label" for="area-ai">Inteligência Artificial</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-md-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="area-automacao" name="areas" value="automacao">
+                                            <label class="form-check-label" for="area-automacao">Automação / n8n</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <!-- SEÇÃO 4: Datas e Disponibilidade -->
+                    <fieldset class="border p-3 rounded mb-4">
+                        <legend class="float-none w-auto px-2 fs-5 fw-bold text-primary">4. Datas e Disponibilidade</legend>
+                        
+                        <div class="row g-3">
+                            <div class="col-12 col-md-4">
+                                <label for="data-presenca" class="form-label">Data de Presença:</label>
+                                <input type="date" class="form-control" id="data-presenca" name="data_presenca">
+                            </div>
+
+                            <div class="col-12 col-md-4">
+                                <label for="mes-disponivel" class="form-label">Mês de Disponibilidade:</label>
+                                <input type="month" class="form-control" id="mes-disponivel" name="mes_disponivel">
+                            </div>
+
+                            <div class="col-12 col-md-4">
+                                <label for="semana-pitch" class="form-label">Semana do Pitch:</label>
+                                <input type="week" class="form-control" id="semana-pitch" name="semana_pitch">
+                            </div>
+
+                            <div class="col-12 col-md-6">
+                                <label for="hora-chegada" class="form-label">Horário de Chegada:</label>
+                                <input type="time" class="form-control" id="hora-chegada" name="hora_chegada">
+                            </div>
+
+                            <div class="col-12 col-md-6">
+                                <label for="agendamento-credencial" class="form-label">Retirada da Credencial:</label>
+                                <input type="datetime-local" class="form-control" id="agendamento-credencial" name="agendamento_credencial">
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <!-- SEÇÃO 5: Preferências do Estande -->
+                    <fieldset class="border p-3 rounded mb-4">
+                        <legend class="float-none w-auto px-2 fs-5 fw-bold text-primary">5. Preferências do Estande</legend>
+                        
+                        <div class="row g-3">
+                            <div class="col-12 col-md-6">
+                                <label for="cor-estande" class="form-label">Cor Identificadora do Estande:</label>
+                                <input type="color" class="form-control form-control-color w-100" id="cor-estande" name="cor_estande" value="#0d6efd">
+                            </div>
+
+                            <div class="col-12 col-md-6">
+                                <label for="nivel-experiencia" class="form-label">Nível de Automação do Projeto:</label>
+                                <input type="range" class="form-range" id="nivel-experiencia" name="nivel_experiencia" min="0" max="100" step="10">
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <!-- SEÇÃO 6: Informações sobre o Projeto -->
+                    <fieldset class="border p-3 rounded mb-4">
+                        <legend class="float-none w-auto px-2 fs-5 fw-bold text-primary">6. Informações sobre o Projeto</legend>
+                        
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <label for="descricao-projeto" class="form-label">Resumo do Projeto / Solução:</label>
+                                <textarea class="form-control" id="descricao-projeto" name="descricao_projeto" rows="4" placeholder="Descreva brevemente sua ideia..." maxlength="500"></textarea>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <!-- SEÇÃO 7: Botões de Ação -->
+                    <div class="d-flex flex-wrap gap-2 justify-content-end mt-4">
+                        <input type="reset" class="btn btn-outline-secondary" value="Limpar Formulário">
+                        <input type="button" class="btn btn-info text-white" value="Botão Genérico (JS)" id="btn-custom">
+                        <button type="submit" class="btn btn-primary">Enviar Inscrição</button>
+                        
+                        <div class="w-100 text-end mt-2">
+                            <label for="btn-img" class="form-label d-block text-muted small">Envio via Input Image:</label>
+                            <input type="image" id="btn-img" name="btn_img" src="img/enviar.png" alt="Botão Enviar" style="max-width: 150px;">
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Bundle do Bootstrap JS e Script Customizado -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

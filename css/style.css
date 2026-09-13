@@ -1,0 +1,12 @@
+/* Customizações adicionais ao Bootstrap */
+body {
+    background-color: #f8f9fa;
+}
+
+legend {
+    font-size: 1.1rem;
+}
+
+.form-control-color {
+    height: 38px;
+}
