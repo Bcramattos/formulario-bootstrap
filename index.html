@@ -85,11 +85,18 @@
                                 <div class="invalid-feedback">Por favor, insira um endereço de e-mail válido.</div>
                             </div>
 
-                            <div class="col-12 col-md-6">
+                           <div class="col-12 col-md-6">
                                 <label for="telefone" class="form-label">Telefone (DDD + Número):</label>
-                                <input type="tel" class="form-control" id="telefone" name="telefone" placeholder="(11) 99999-9999" pattern="^\(\d{2}\)\s\d{4,5}-\d{4}$" required>
-                                <div class="invalid-feedback">Insira o telefone no formato: (11) 99999-9999</div>
-                                <div class="form-text">Exemplo: (11) 99999-9999</div>
+                                <input type="tel" 
+                                    class="form-control" 
+                                    id="telefone" 
+                                    name="telefone" 
+                                    placeholder="(11) 99999-9999" 
+                                    maxlength="15"
+                                    pattern="^\(\d{2}\)\s\d{4,5}-\d{4}$" 
+                                    required>
+                                <div class="invalid-feedback">Insira o telefone completo com DDD no formato: (11) 99999-9999</div>
+                                <div class="form-text">A formatação é aplicada automaticamente ao digitar.</div>
                             </div>
 
                             <div class="col-12 col-md-6">
@@ -228,16 +235,27 @@
                     </fieldset>
 
                     <!-- SEÇÃO 7: Botões de Ação -->
-                    <div class="d-flex flex-wrap gap-2 justify-content-end mt-4">
-                        <input type="reset" class="btn btn-outline-secondary" value="Limpar Formulário">
-                        <input type="button" class="btn btn-info text-white" value="Botão Genérico (JS)" id="btn-custom">
-                        <button type="submit" class="btn btn-primary">Enviar Inscrição</button>
-                        
-                        <div class="w-100 text-end mt-2">
-                            <label for="btn-img" class="form-label d-block text-muted small">Envio via Input Image:</label>
-                            <input type="image" id="btn-img" name="btn_img" src="img/enviar.png" alt="Botão Enviar" style="max-width: 150px;">
+                        <div class="row g-2 align-items-center justify-content-end mt-4">
+                            <div class="col-auto">
+                                <input type="reset" class="btn btn-outline-secondary" value="Limpar Formulário">
+                            </div>
+                            <div class="col-auto">
+                                <input type="button" class="btn btn-info text-white" value="Botão Genérico (JS)" id="btn-custom">
+                            </div>
+                            <div class="col-auto">
+                                <button type="submit" class="btn btn-primary">Enviar Inscrição</button>
+                            </div>
+                            <div class="col-auto">
+                                <!-- Input Image sem dependência de arquivo de imagem local (usando SVG Data URI) -->
+                                <input type="image" 
+                                    id="btn-img" 
+                                    name="btn_img" 
+                                    alt="Enviar via Image" 
+                                    class="btn btn-success p-2 d-block" 
+                                    style="height: 38px; width: auto;"
+                                    src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='white' class='bi bi-send' viewBox='0 0 16 16'><path d='M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm-1.428-2.61L1.4 8.76l4.338 2.761 1.47-4.061Z'/></svg>">
+                            </div>
                         </div>
-                    </div>
 
                 </form>
 

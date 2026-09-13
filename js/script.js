@@ -1,68 +1,59 @@
-/**
- * Arquivo: js/script.js
- * Descrição: Script de automação e validação personalizada do formulário Bootstrap.
- */
-
-// Aguarda o carregamento completo da árvore DOM antes de executar os scripts
 document.addEventListener('DOMContentLoaded', () => {
 
-    /**
-     * FUNÇÃO 1: Validação de Formulários do Bootstrap (substitui os balões nativos em inglês)
-     * O que faz: Intercepta o envio do formulário, valida os campos obrigatórios em Português
-     * e aplica as classes visuais do Bootstrap (.was-validated, .is-invalid, .is-valid).
-     */
-    const inicializarValidacaoBootstrap = () => {
-        // Seleciona todos os formulários que possuem a classe 'needs-validation'
-        const forms = document.querySelectorAll('.needs-validation');
+    // 1. Máscara Automática de Telefone: (XX) XXXXX-XXXX ou (XX) XXXX-XXXX
+    const inputTelefone = document.getElementById('telefone');
 
-        Array.from(forms).forEach(form => {
-            form.addEventListener('submit', event => {
-                // Se algum campo obrigatório não estiver preenchido corretamente:
-                if (!form.checkValidity()) {
-                    event.preventDefault();  // Impede o envio do formulário
-                    event.stopPropagation(); // Interrompe a propagação do evento
-                } else {
-                    alert('Formulário validado com sucesso!');
-                }
+    if (inputTelefone) {
+        inputTelefone.addEventListener('input', (e) => {
+            let value = e.target.value.replace(/\D/g, ''); // Remove tudo que não for dígito
+            
+            // Limita a 11 dígitos
+            value = value.substring(0, 11);
 
-                // Adiciona a classe que ativa as mensagens vermelhas/verdes do Bootstrap
-                form.classList.add('was-validated');
-            }, false);
+            // Aplica a formatação progressiva
+            if (value.length > 10) {
+                // Formato Celular: (11) 99999-9999
+                value = value.replace(/^(\d{2})(\d{5})(\d{4})$/, '($1) $2-$3');
+            } else if (value.length > 6) {
+                // Formato Fixo/Parcial: (11) 9999-9999
+                value = value.replace(/^(\d{2})(\d{4})(\d{0addItem})/, '($1) $2-$3');
+            } else if (value.length > 2) {
+                // Formato DDD: (11) 999...
+                value = value.replace(/^(\d{2})(\d{0,5})/, '($1) $2');
+            } else if (value.length > 0) {
+                // Apenas abre parênteses: (11...
+                value = value.replace(/^(\d*)/, '($1');
+            }
+
+            e.target.value = value;
         });
-    };
+    }
 
-    /**
-     * FUNÇÃO 2: Evento para o campo do tipo "button" (input type="button")
-     * O que faz: Demonstra a captura de cliques em um botão sem função nativa de submit/reset.
-     */
-    const inicializarBotaoCustomizado = () => {
-        const btnCustom = document.getElementById('btn-custom');
-        
-        if (btnCustom) {
-            btnCustom.addEventListener('click', () => {
-                alert('Ação disparada pelo input do tipo "button" via JavaScript!');
-            });
-        }
-    };
+    // 2. Validação Bootstrap
+    const forms = document.querySelectorAll('.needs-validation');
+    Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+            if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+        }, false);
+    });
 
-    /**
-     * FUNÇÃO 3: Limpeza visual de validações ao resetar o formulário
-     * O que faz: Remove as bordas vermelhas/verdes de validação quando o usuário clica em "Limpar Formulário".
-     */
-    const inicializarLimpezaFormulario = () => {
-        const form = document.querySelector('.needs-validation');
-        
-        if (form) {
-            form.addEventListener('reset', () => {
-                // Remove a classe do Bootstrap que exibe os estados de validação
-                form.classList.remove('was-validated');
-            });
-        }
-    };
+    // 3. Botão Genérico
+    const btnCustom = document.getElementById('btn-custom');
+    if (btnCustom) {
+        btnCustom.addEventListener('click', () => {
+            alert('Ação disparada pelo botão genérico!');
+        });
+    }
 
-    // Chamada de execução das funções
-    inicializarValidacaoBootstrap();
-    inicializarBotaoCustomizado();
-    inicializarLimpezaFormulario();
-
+    // 4. Limpeza do formulário
+    const form = document.querySelector('.needs-validation');
+    if (form) {
+        form.addEventListener('reset', () => {
+            form.classList.remove('was-validated');
+        });
+    }
 });
