@@ -7,7 +7,19 @@
 ---
 
 ## 🎯 Objetivo do Projeto
-Este projeto foi desenvolvido como uma atividade prática com o objetivo de investigar e dominar a utilização de formulários HTML5 integrados ao framework CSS **Bootstrap 5**. A aplicação simula a página de inscrição e submissão de projetos para uma Mostra de Tecnologia e Inovação, garantindo responsividade e validações nativas.
+Este projeto foi desenvolvido como uma atividade prática com o objetivo de investigar e dominar a utilização de formulários HTML5 integrados ao framework CSS **Bootstrap 5**. A aplicação simula a página de inscrição e submissão de projetos para uma Mostra de Tecnologia e Inovação, garantindo responsividade, máscaras de entrada em tempo real e validações nativas.
+
+---
+
+## 📁 Estrutura do Projeto
+```text
+formulario-bootstrap/
+├── index.html
+├── README.md
+├── css/
+│   └── style.css
+└── js/
+    └── script.js
 
 ---
 

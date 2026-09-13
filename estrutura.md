@@ -3,7 +3,5 @@ formulario-bootstrap/
 ├── README.md
 ├── css/
 │   └── style.css
-├── js/
-│   └── script.js
-└── img/
-    └── enviar.png
+└── js/
+    └── script.js
